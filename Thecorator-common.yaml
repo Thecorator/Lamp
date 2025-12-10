@@ -402,14 +402,14 @@ proxy-groups:
 ##### BEGIN rule-providers #####
 rule-providers:
   Ban:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Ban.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/Ban.list
     path: ./ruleset/Ban.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   Unban:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Unban.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/Unban.list
     path: ./ruleset/Unban.list
     behavior: classical
     interval: 86400
@@ -453,35 +453,35 @@ rule-providers:
     type: http
 
   ForceD:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/ForceD.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/ForceD.list
     path: ./ruleset/ForceD.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   ForceP:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/ForceP.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/ForceP.list
     path: ./ruleset/ForceP.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   Point:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Point.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/Point.list
     path: ./ruleset/Point.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   Special:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Special.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/Special.list
     path: ./ruleset/Special.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   Temp:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Temp.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/Temp.list
     path: ./ruleset/Temp.list
     behavior: classical
     interval: 86400
@@ -489,35 +489,35 @@ rule-providers:
     type: http
 
   BTD:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/BTD.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/BTD.list
     path: ./ruleset/BTD.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   BTP:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/BTP.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/BTP.list
     path: ./ruleset/BTP.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   PikPakD:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/PikPakD.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/PikPakD.list
     path: ./ruleset/PikPakD.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   PikPakP:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/PikPakP.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/PikPakP.list
     path: ./ruleset/PikPakP.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   Speedtest:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Speedtest.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/Speedtest.list
     path: ./ruleset/Speedtest.list
     behavior: classical
     interval: 86400
@@ -569,7 +569,7 @@ rule-providers:
     type: http
 
   AI:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/AI.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/AI.list
     path: ./ruleset/AI.list
     behavior: classical
     interval: 86400
@@ -634,7 +634,7 @@ rule-providers:
     format: text
     type: http
   Telegram:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Telegram.list
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/Telegram.list
     path: ./ruleset/Telegram.list
     behavior: classical
     interval: 86400
@@ -657,7 +657,7 @@ rule-providers:
     type: http
 
   fake-ip-filter:
-    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/fake-ip-filter.yaml
+    url: https://raw.githubusercontent.com/Thecorator/Lamp/main/fake-ip-filter.yaml
     path: ./ruleset/fake-ip-filter.yaml
     behavior: domain
     interval: 86400
