@@ -1,0 +1,196 @@
+##自用
+
+##DOMAIN,ad.com,REJECT #匹配完整域名
+##DOMAIN-SUFFIX,google.com,auto #匹配域名后缀
+##DOMAIN-KEYWORD,google,auto #使用域名关键字匹配
+##DOMAIN-REGEX,^abc.*com,PROXY #域名正则表达式匹配
+##GEOSITE,youtube,PROXY #匹配 Geosite 内的域名，部分内容参考 https://github.com/v2fly/domain-list-community/tree/master/data
+##
+##IP-CIDR,127.0.0.0/8,DIRECT,no-resolve #匹配 IP 地址范围，IP-CIDR 和 IP-CIDR6 效果是一样的，IP-CIDR6 只是一个别名
+##IP-CIDR6,2620:0:2d0:200::7/32,auto #匹配 IP 地址范围，IP-CIDR 和 IP-CIDR6 效果是一样的，IP-CIDR6 只是一个别名
+##IP-SUFFIX,8.8.8.8/24,PROXY #匹配 IP 后缀范围
+##IP-ASN,13335,DIRECT #匹配 IP 所属 ASN
+##GEOIP,CN,DIRECT #匹配 IP 所属国家代码
+##
+##SRC-GEOIP,cn,DIRECT #匹配来源 IP 所属国家代码
+##SRC-IP-ASN,9808,DIRECT #匹配来源 IP 所属 ASN
+##SRC-IP-CIDR,192.168.1.201/32,DIRECT #匹配来源 IP 地址范围
+##SRC-IP-SUFFIX,192.168.1.201/8,DIRECT #匹配来源 IP 后缀范围
+##
+##DST-PORT,80,DIRECT #匹配请求目标端口范围，mihomo 可以使用 来匹配端口范围，使用 / 或者 , 来区分多个端口/端口范围
+##SRC-PORT,7777,DIRECT #匹配请求来源端口范围，mihomo 可以使用 来匹配端口范围，使用 / 或者 , 来区分多个端口/端口范围
+##
+##IN-PORT,7890,PROXY #匹配入站端口，可用端口范围，mihomo 可以使用 来匹配端口范围，使用 / 或者 , 来区分多个端口/端口范围
+##IN-TYPE,SOCKS/HTTP,PROXY #匹配入站类型
+##IN-USER,mihomo,PROXY #匹配入站用户名，支持使用 / 分隔多个用户名
+##IN-NAME,ss,PROXY #匹配入站名称
+##
+##PROCESS-PATH,/usr/bin/wget,PROXY #使用完整进程路径匹配
+##PROCESS-PATH,C:\Program Files\Google\Chrome\Application\chrome.exe,PROXY #使用完整进程路径匹配
+##PROCESS-PATH-REGEX,.*bin/wget,PROXY #使用进程路径正则表达式匹配
+##PROCESS-PATH-REGEX,(?i).*Application\\chrome.*,PROXY #使用进程路径正则表达式匹配
+##
+##PROCESS-NAME,curl,PROXY #使用进程匹配
+##PROCESS-NAME,chrome.exe,PROXY #使用进程匹配
+##PROCESS-NAME,com.termux,PROXY #使用进程匹配，在Android平台可以匹配包名
+##PROCESS-NAME-REGEX,curl$,PROXY #使用进程名称正则表达式匹配
+##PROCESS-NAME-REGEX,(?i)Telegram,PROXY #使用进程名称正则表达式匹配
+##PROCESS-NAME-REGEX,.*telegram.*,PROXY #使用进程名称正则表达式匹配，在Android平台可以匹配包名
+##UID,1001,DIRECT #匹配 Linux USER ID
+##
+##NETWORK,udp,DIRECT #匹配 tcp 或者 udp
+##DSCP,4,DIRECT #匹配 DSCP 标记 (仅限 tproxy udp 入站)
+##
+##RULE-SET,providername,proxy #引用规则集合，需配置 rule-providers
+##AND,((DOMAIN,baidu.com),(NETWORK,UDP)),DIRECT #逻辑规则，需要注意括号的使用
+##OR,((NETWORK,UDP),(DOMAIN,baidu.com)),REJECT #逻辑规则，需要注意括号的使用
+##NOT,((DOMAIN,baidu.com)),PROXY #逻辑规则，需要注意括号的使用
+##SUB-RULE,(NETWORK,tcp),sub-rule #匹配至子规则，需要注意括号的使用
+##
+##MATCH,auto #匹配所有请求，无需条件
+##
+##附加参数
+##no-resolve
+##仅支持关于「目标IP」的规则
+##域名开始匹配关于「目标IP」规则时，mihomo 将触发 dns 解析来检查域名的「目标IP」是否匹配规则，可以选择「no-resolve」选项以跳过 dns 解析
+##如在更早的匹配中触发了 dns 解析，则依旧会匹配到添加了「no-resolve」选项的「目标IP」类规则
+##src
+##仅支持关于「目标IP」的规则
+##将「目标IP」匹配转为「来源IP」匹配
+
+# 本地/局域网地址
+DOMAIN-SUFFIX,localhost
+DOMAIN-SUFFIX,local
+DOMAIN-SUFFIX,localdomain
+DOMAIN-SUFFIX,domain
+DOMAIN-SUFFIX,host
+DOMAIN-SUFFIX,example
+DOMAIN-SUFFIX,example.com
+DOMAIN-SUFFIX,example.net
+DOMAIN-SUFFIX,example.org
+DOMAIN-SUFFIX,test
+DOMAIN-SUFFIX,invalid
+DOMAIN-SUFFIX,lan
+DOMAIN-SUFFIX,home
+DOMAIN-SUFFIX,internal
+DOMAIN-SUFFIX,intranet
+DOMAIN-SUFFIX,private
+DOMAIN-SUFFIX,corp
+DOMAIN-SUFFIX,onion
+DOMAIN-SUFFIX,alt
+DOMAIN-SUFFIX,direct
+DOMAIN-SUFFIX,ip6-localhost
+DOMAIN-SUFFIX,ip6-loopback
+IP-CIDR,0.0.0.0/8,no-resolve
+IP-CIDR,10.0.0.0/8,no-resolve
+IP-CIDR,100.64.0.0/10,no-resolve
+IP-CIDR,127.0.0.0/8,no-resolve
+IP-CIDR,169.254.0.0/16,no-resolve
+IP-CIDR,172.16.0.0/12,no-resolve
+IP-CIDR,192.0.0.0/24,no-resolve
+IP-CIDR,192.0.2.0/24,no-resolve
+IP-CIDR,192.88.99.0/24,no-resolve
+IP-CIDR,192.168.0.0/16,no-resolve
+IP-CIDR,198.18.0.0/15,no-resolve
+IP-CIDR,198.51.100.0/24,no-resolve
+IP-CIDR,203.0.113.0/24,no-resolve
+IP-CIDR,224.0.0.0/4,no-resolve
+IP-CIDR,233.252.0.0/24,no-resolve
+IP-CIDR,240.0.0.0/4,no-resolve
+IP-CIDR,255.255.255.255/32,no-resolve
+IP-CIDR6,::/128,no-resolve
+IP-CIDR6,::1/128,no-resolve
+IP-CIDR6,::ffff:0:0/96,no-resolve
+IP-CIDR6,::ffff:0:0:0/96,no-resolve
+IP-CIDR6,64:ff9b::/96,no-resolve
+IP-CIDR6,64:ff9b:1::/48,no-resolve
+IP-CIDR6,100::/64,no-resolve
+IP-CIDR6,2001::/32,no-resolve
+IP-CIDR6,2001:20::/28,no-resolve
+IP-CIDR6,2001:db8::/32,no-resolve
+IP-CIDR6,2002::/16,no-resolve
+IP-CIDR6,3fff::/20,no-resolve
+IP-CIDR6,5f00::/16,no-resolve
+IP-CIDR6,fc00::/7,no-resolve
+IP-CIDR6,fe80::/10,no-resolve
+IP-CIDR6,ff00::/8,no-resolve
+
+# 路由器管理域名
+DOMAIN,instant.arubanetworks.com
+DOMAIN,setmeup.arubanetworks.com
+DOMAIN,router.asus.com
+DOMAIN,www.asusrouter.com
+DOMAIN-SUFFIX,hiwifi.com
+DOMAIN-SUFFIX,leike.cc
+DOMAIN-SUFFIX,miwifi.com
+DOMAIN-SUFFIX,my.router
+DOMAIN-SUFFIX,p.to
+DOMAIN-SUFFIX,peiluyou.com
+DOMAIN-SUFFIX,phicomm.me
+DOMAIN-SUFFIX,router.ctc
+DOMAIN-SUFFIX,routerlogin.com
+DOMAIN-SUFFIX,tendawifi.com
+DOMAIN-SUFFIX,zte.home
+DOMAIN-SUFFIX,tplogin.cn
+DOMAIN-SUFFIX,wifi.cmcc
+
+# DNS
+#DOMAIN,dns.alidns.com
+#DOMAIN,doh.pub
+#DOMAIN,sm2.doh.pub
+#IP-CIDR,223.5.5.5/32,no-resolve
+#IP-CIDR,119.29.29.29/32,no-resolve
+#IP-CIDR,114.114.114.114/32,no-resolve
+
+# 115
+DOMAIN-SUFFIX,115.com
+DOMAIN-SUFFIX,115cdn.com
+DOMAIN-SUFFIX,115cdn.net
+DOMAIN-SUFFIX,115img.com
+DOMAIN-SUFFIX,115vod.com
+DOMAIN-SUFFIX,116cd.cn
+DOMAIN-SUFFIX,116cd.com
+DOMAIN-SUFFIX,116cd.net
+DOMAIN-SUFFIX,anxia.com
+DOMAIN-SUFFIX,sq.cc
+
+# 微信聊天表情包
+DOMAIN,wxsnsdythumb.wxs.qq.com
+DOMAIN,wxsnsdy.wxs.qq.com
+
+# 酷安缩略图
+DOMAIN,pp.myapp.com
+
+# Libvio
+DOMAIN-KEYWORD,libvio
+
+# Steam CN
+DOMAIN,csgo.wmsj.cn
+DOMAIN,dl.steam.clngaa.com
+DOMAIN,dl.steam.ksyna.com
+DOMAIN,dota2.wmsj.cn
+DOMAIN,st.dl.bscstorage.net
+DOMAIN,st.dl.eccdnx.com
+DOMAIN,st.dl.pinyuncloud.com
+DOMAIN,steampipe.steamcontent.tnkjmec.com
+DOMAIN,steampowered.com.8686c.com
+DOMAIN,steamstatic.com.8686c.com
+DOMAIN,wmsjsteam.com
+DOMAIN,xz.pphimalayanrt.com
+DOMAIN-SUFFIX,cm.steampowered.com
+DOMAIN-SUFFIX,steamchina.com
+DOMAIN-SUFFIX,steamcontent.com
+DOMAIN-SUFFIX,steamusercontent.com
+
+# Steam CDN
+DOMAIN-SUFFIX,cm.steampowered.com
+DOMAIN-SUFFIX,steamserver.net
+
+# My Video
+DOMAIN-SUFFIX,girigirilove.com
+DOMAIN-SUFFIX,auete.cc
+DOMAIN-KEYWORD,dytt-
+
+# MICU
+DOMAIN,tv.micu.hk
+DOMAIN,tv1.micu.hk

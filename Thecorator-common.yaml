@@ -1,0 +1,818 @@
+##### ---------------------------------------------------------------------------------------------------- #####
+##### BEGIN #####
+allow-lan: true
+mode: rule
+log-level: warning
+ipv6: false
+global-client-fingerprint: random
+unified-delay: true
+tcp-concurrent: true
+##### END #####
+##### ---------------------------------------------------------------------------------------------------- #####
+##### BEGIN geox-url #####
+geox-url:
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+  asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+geo-auto-update: true
+geo-update-interval: 24
+##### END geox-url #####
+##### ---------------------------------------------------------------------------------------------------- #####
+##### BEGIN proxy-groups #####
+proxy-groups:
+  ### BEGIN DEFAULT ###
+  - name: 🔑 Default
+    include-all: true
+    type: select
+    proxies:
+      - 🇺🇸
+      - 🇭🇰
+      - 🇨🇳
+      - 🇸🇬
+      - 🇯🇵
+      - 🇰🇷
+      - DIRECT
+      - REJECT
+  - name: 💡 Point
+    include-all: true
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 🇺🇸
+      - 🇭🇰
+      - 🇨🇳
+      - 🇸🇬
+      - 🇯🇵
+      - 🇰🇷
+      - DIRECT
+      - REJECT
+  - name: 💫 Special
+    include-all: true
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 🇺🇸
+      - 🇭🇰
+      - 🇨🇳
+      - 🇸🇬
+      - 🇯🇵
+      - 🇰🇷
+      - DIRECT
+      - REJECT
+  - name: 🚧 Temp
+    include-all: true
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 🇺🇸
+      - 🇭🇰
+      - 🇨🇳
+      - 🇸🇬
+      - 🇯🇵
+      - 🇰🇷
+      - DIRECT
+      - REJECT
+  - name: 💿 Media
+    include-all: true
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 🇺🇸
+      - 🇭🇰
+      - 🇨🇳
+      - 🇸🇬
+      - 🇯🇵
+      - 🇰🇷
+      - DIRECT
+      - REJECT
+  - name: 🧬 Proxy
+    type: select
+    proxies:
+      - 🔑 Default
+      - DIRECT
+      - ♻️ Url-Test
+      - 🔯 Fallback
+      - 🔮 Load-Balance
+      - REJECT
+  - name: 💠 Driect
+    type: select
+    proxies:
+      - DIRECT
+      - REJECT
+      - 🧬 Proxy
+  - name: ⛔ Ban
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🧬 Proxy
+  - name: ⭕ Unban
+    type: select
+    proxies:
+      - DIRECT
+      - 🧬 Proxy
+      - REJECT
+  - name: 🐟 Final
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - DIRECT
+      - REJECT
+  ### END DEFAULT ###
+
+  ### BEGIN TEST ###
+  - name: ♻️ Url-Test
+    type: url-test
+    include-all: true
+    interval: 300
+    tolerance: 50
+  - name: 🔯 Fallback
+    type: fallback
+    include-all: true
+    interval: 300
+    tolerance: 50
+  - name: 🔮 Load-Balance
+    type: load-balance
+    include-all: true
+    interval: 300
+    tolerance: 50
+  ### END TEST ###
+
+  ### BEGIN MINE ###
+  - name: 💪 ForceD
+    type: select
+    proxies:
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - REJECT
+  - name: 💪 ForceP
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  ### END MINE ###
+
+  ### BEGIN MINE OTHER ###
+  - name: 🧲 BTD
+    type: select
+    proxies:
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - REJECT
+  - name: 🧲 BTP
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  - name: ☁️ PikPakD
+    type: select
+    proxies:
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - REJECT
+  - name: ☁️ PikPakP
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  ### END MINE OTHER ###
+
+  ### BEGIN SERVICE ###
+  - name: 💬 AI
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  - name: 📹 Youtube
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  - name: 🖼️ Google
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  - name: 👾 Github
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  - name: ☁️ OneDrive
+    type: select
+    proxies:
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - REJECT
+  - name: 🌆 Microsoft
+    type: select
+    proxies:
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - REJECT
+  - name: 🍎 Apple
+    type: select
+    proxies:
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - REJECT
+  - name: 📟 ProxyIM
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  - name: 🌌 Social
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  - name: ⚡ SpeedTest
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  ### END SERVICE ###
+
+  ### BEGIN GAME ###
+  - name: 🎮 Game
+    type: select
+    proxies:
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+      - DIRECT
+      - REJECT
+  ### END GAME ###
+
+  ### BEGIN MEDIA ###
+  - name: 📺 BilibiliHMT
+    type: select
+    proxies:
+      - DIRECT
+      - 🇭🇰
+      - 🇨🇳
+      - REJECT
+  - name: 🎥 Media
+    type: select
+    proxies:
+      - 💿 Media
+      - DIRECT
+      - REJECT
+  ### END MEDIA ###
+
+  ### BEGIN ADBLOCK ###
+  - name: 🛑 AD
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+  - name: 🍃 ProgramAD
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+  - name: 📛 AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+  - name: 🛡️ Privacy
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
+  ### END ADBLOCK ###
+
+  ### BEGIN COUNTRY ###
+  - name: 🇺🇸
+    include-all: true
+    filter: (?i)🇺🇸|美|US|USA|United.*States
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 🇭🇰
+    include-all: true
+    filter: (?i)🇭🇰|港|HK|HKG|Hong.*Kong
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 🇨🇳
+    include-all: true
+    filter: (?i)🇨🇳|台|臺|TW|TWN|Tai.*wan
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 🇸🇬
+    include-all: true
+    filter: (?i)🇸🇬|新|坡|新加坡|狮城|SG|SGP|Singapore
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 🇯🇵
+    include-all: true
+    filter: (?i)🇯🇵|日|JP|JPN|Japan
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 🇰🇷
+    include-all: true
+    filter: (?i)🇰🇷|韩|韓|KOR|Korea
+    type: url-test
+    interval: 300
+    tolerance: 50
+  ### END COUNTRY ###
+##### END proxy-groups #####
+##### ---------------------------------------------------------------------------------------------------- #####
+##### BEGIN rule-providers #####
+rule-providers:
+  Ban:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Ban.list
+    path: ./ruleset/Ban.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Unban:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Unban.list
+    path: ./ruleset/Unban.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  BanAD:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+    path: ./ruleset/BanAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanProgramAD:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+    path: ./ruleset/BanProgramAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanEasyList:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyList.list
+    path: ./ruleset/BanEasyList.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanEasyListChina:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list
+    path: ./ruleset/BanEasyListChina.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanEasyPrivacy:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyPrivacy.list
+    path: ./ruleset/BanEasyPrivacy.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  ForceD:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/ForceD.list
+    path: ./ruleset/ForceD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ForceP:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/ForceP.list
+    path: ./ruleset/ForceP.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Point:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Point.list
+    path: ./ruleset/Point.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Special:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Special.list
+    path: ./ruleset/Special.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Temp:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Temp.list
+    path: ./ruleset/Temp.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  BTD:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/BTD.list
+    path: ./ruleset/BTD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BTP:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/BTP.list
+    path: ./ruleset/BTP.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  PikPakD:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/PikPakD.list
+    path: ./ruleset/PikPakD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  PikPakP:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/PikPakP.list
+    path: ./ruleset/PikPakP.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Speedtest:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Speedtest.list
+    path: ./ruleset/Speedtest.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  SteamCN:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
+    path: ./ruleset/SteamCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Epic:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list
+    path: ./ruleset/Epic.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Origin:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Origin.list
+    path: ./ruleset/Origin.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Sony:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list
+    path: ./ruleset/Sony.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Nintendo:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list
+    path: ./ruleset/Nintendo.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Steam:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list
+    path: ./ruleset/Steam.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  AI:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/AI.list
+    path: ./ruleset/AI.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  GoogleCN:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list
+    path: ./ruleset/GoogleCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  GoogleFCM:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list
+    path: ./ruleset/GoogleFCM.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  YouTube:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
+    path: ./ruleset/YouTube.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  GoogleCNProxyIP:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
+    path: ./ruleset/GoogleCNProxyIP.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Google:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list
+    path: ./ruleset/Google.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  OneDrive:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list
+    path: ./ruleset/OneDrive.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Microsoft:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list
+    path: ./ruleset/Microsoft.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Apple:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+    path: ./ruleset/Apple.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Telegram:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/Telegram.list
+    path: ./ruleset/Telegram.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  TelegramAlt:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
+    path: ./ruleset/TelegramAlt.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  BilibiliHMT:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list
+    path: ./ruleset/BilibiliHMT.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  fake-ip-filter:
+    url: https://raw.githubusercontent.com/Thecorator/Clash-Rules/main/fake-ip-filter.yaml
+    path: ./ruleset/fake-ip-filter.yaml
+    behavior: domain
+    interval: 86400
+    type: http
+##### END rule-providers #####
+##### ---------------------------------------------------------------------------------------------------- #####
+##### BEGIN rules #####
+rules:
+  - "AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT"
+  - "AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT"
+
+  - "RULE-SET,Ban,⛔ Ban"
+  - "RULE-SET,Unban,⭕ Unban"
+
+  - "GEOSITE,private,💠 Driect"
+  - "GEOIP,private,💠 Driect,no-resolve"
+
+  - "GEOSITE,category-ads-all,🛑 AD"
+  - "RULE-SET,BanAD,🛑 AD"
+  - "RULE-SET,BanProgramAD,🍃 ProgramAD"
+  - "RULE-SET,BanEasyList,📛 AdBlock"
+  - "RULE-SET,BanEasyListChina,📛 AdBlock"
+  - "RULE-SET,BanEasyPrivacy,🛡️ Privacy"
+
+  - "RULE-SET,ForceD,💪 ForceD"
+  - "RULE-SET,ForceP,💪 ForceP"
+  - "RULE-SET,Point,💡 Point"
+  - "RULE-SET,Special,💫 Special"
+  - "RULE-SET,Temp,🚧 Temp"
+
+  - "RULE-SET,BTD,🧲 BTD"
+  - "RULE-SET,BTP,🧲 BTP"
+  - "RULE-SET,PikPakD,☁️ PikPakD"
+  - "RULE-SET,PikPakP,☁️ PikPakP"
+
+  - "RULE-SET,SteamCN,💠 Driect"
+  - "GEOSITE,category-games@cn,💠 Driect"
+  - "GEOSITE,category-game-platforms-download,💠 Driect"
+  - "GEOSITE,category-public-tracker,💠 Driect"
+
+  - "RULE-SET,Epic,🎮 Game"
+  - "RULE-SET,Origin,🎮 Game"
+  - "RULE-SET,Sony,🎮 Game"
+  - "RULE-SET,Nintendo,🎮 Game"
+  - "RULE-SET,Steam,🎮 Game"
+  - "GEOSITE,steam,🎮 Game"
+  - "GEOSITE,category-games,🎮 Game"
+
+  - "RULE-SET,AI,💬 AI"
+  - "GEOSITE,category-ai-!cn,💬 AI"
+  - "GEOSITE,openai,💬 AI"
+  - "GEOSITE,anthropic,💬 AI"
+  - "GEOSITE,xai,💬 AI"
+  - "GEOSITE,bing,💬 AI"
+  - "GEOSITE,google-deepmind,💬 AI"
+  - "GEOSITE,google-gemini,💬 AI"
+  - "GEOSITE,apple-intelligence,💬 AI"
+  - "GEOSITE,groq,💬 AI"
+  - "GEOSITE,perplexity,💬 AI"
+  - "GEOSITE,poe,💬 AI"
+  - "GEOSITE,cursor,💬 AI"
+
+  - "RULE-SET,GoogleCN,💠 Driect"
+  - "GEOSITE,google-cn,💠 Driect"
+  - "RULE-SET,GoogleFCM,💠 Driect"
+  - "GEOSITE,googlefcm,💠 Driect"
+
+  - "RULE-SET,YouTube,📹 Youtube"
+  - "GEOSITE,youtube,📹 Youtube"
+  - "RULE-SET,GoogleCNProxyIP,🖼️ Google"
+  - "RULE-SET,Google,🖼️ Google"
+  - "GEOSITE,google,🖼️ Google"
+  - "GEOIP,google,🖼️ Google,no-resolve"
+  - "GEOSITE,github,👾 Github"
+  - "RULE-SET,OneDrive,☁️ OneDrive"
+  - "GEOSITE,onedrive,☁️ OneDrive"
+  - "RULE-SET,Microsoft,🌆 Microsoft"
+  - "GEOSITE,microsoft,🌆 Microsoft"
+  - "RULE-SET,Apple,🍎 Apple"
+  - "GEOSITE,apple,🍎 Apple"
+  - "RULE-SET,Telegram,📟 ProxyIM"
+  - "RULE-SET,TelegramAlt,📟 ProxyIM"
+  - "GEOIP,telegram,📟 ProxyIM,no-resolve"
+  - "GEOSITE,category-communication,📟 ProxyIM"
+  - "GEOSITE,category-social-media-!cn,🌌 Social"
+  - "GEOIP,twitter,🌌 Social,no-resolve"
+  - "GEOIP,facebook,🌌 Social,no-resolve"
+  - "GEOSITE,category-speedtest,⚡ SpeedTest"
+  - "RULE-SET,Speedtest,⚡ SpeedTest"
+
+  - "RULE-SET,BilibiliHMT,📺 BilibiliHMT"
+
+  - "GEOSITE,category-entertainment,🎥 Media"
+  - "GEOSITE,netflix,🎥 Media"
+  - "GEOIP,netflix,🎥 Media,no-resolve"
+  - "GEOSITE,disney,🎥 Media"
+  - "GEOSITE,hbo,🎥 Media"
+  - "GEOSITE,primevideo,🎥 Media"
+  - "GEOSITE,apple-tvplus,🎥 Media"
+
+  - "GEOSITE,gfw,🧬 Proxy"
+  - "GEOSITE,geolocation-!cn,🧬 Proxy"
+  - "GEOSITE,CN,💠 Driect"
+  - "GEOIP,CN,💠 Driect,no-resolve"
+  - "MATCH,🐟 Final"
+##### END rules #####
+##### ---------------------------------------------------------------------------------------------------- #####
+##### BEGIN dns #####
+dns:
+  enable: true
+  cache-algorithm: arc
+  prefer-h3: false
+  use-hosts: true
+  use-system-hosts: true
+  respect-rules: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - "rule-set:fake-ip-filter"
+    - "geosite:connectivity-check"
+    - "geosite:private"
+    - "geosite:category-games"
+  default-nameserver:
+    - 223.5.5.5
+    #- 119.29.29.29
+    #- 114.114.114.114
+  nameserver:
+    #- 8.8.8.8
+    #- 1.1.1.1
+    #- 9.9.9.9
+    #- tls://dns.google:853
+    #- tls://one.one.one.one:853
+    #- tls://dns.quad9.net:853
+    - https://dns.google/dns-query
+    #- https://cloudflare-dns.com/dns-query
+    #- https://dns.quad9.net/dns-query
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    #- https://doh.pub/dns-query
+    #- https://sm2.doh.pub/dns-query
+  direct-nameserver:
+    - https://dns.alidns.com/dns-query
+    #- https://doh.pub/dns-query
+    #- https://sm2.doh.pub/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://dns.alidns.com/dns-query
+      #- https://doh.pub/dns-query
+      #- https://sm2.doh.pub/dns-query
+    "geosite:geolocation-!cn":
+      - https://dns.google/dns-query
+      #- https://cloudflare-dns.com/dns-query
+      #- https://dns.quad9.net/dns-query
+  direct-nameserver-follow-policy: false
+##### END dns #####

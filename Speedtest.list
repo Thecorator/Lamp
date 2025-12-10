@@ -1,0 +1,61 @@
+##自用
+
+##DOMAIN,ad.com,REJECT #匹配完整域名
+##DOMAIN-SUFFIX,google.com,auto #匹配域名后缀
+##DOMAIN-KEYWORD,google,auto #使用域名关键字匹配
+##DOMAIN-REGEX,^abc.*com,PROXY #域名正则表达式匹配
+##GEOSITE,youtube,PROXY #匹配 Geosite 内的域名，部分内容参考 https://github.com/v2fly/domain-list-community/tree/master/data
+##
+##IP-CIDR,127.0.0.0/8,DIRECT,no-resolve #匹配 IP 地址范围，IP-CIDR 和 IP-CIDR6 效果是一样的，IP-CIDR6 只是一个别名
+##IP-CIDR6,2620:0:2d0:200::7/32,auto #匹配 IP 地址范围，IP-CIDR 和 IP-CIDR6 效果是一样的，IP-CIDR6 只是一个别名
+##IP-SUFFIX,8.8.8.8/24,PROXY #匹配 IP 后缀范围
+##IP-ASN,13335,DIRECT #匹配 IP 所属 ASN
+##GEOIP,CN,DIRECT #匹配 IP 所属国家代码
+##
+##SRC-GEOIP,cn,DIRECT #匹配来源 IP 所属国家代码
+##SRC-IP-ASN,9808,DIRECT #匹配来源 IP 所属 ASN
+##SRC-IP-CIDR,192.168.1.201/32,DIRECT #匹配来源 IP 地址范围
+##SRC-IP-SUFFIX,192.168.1.201/8,DIRECT #匹配来源 IP 后缀范围
+##
+##DST-PORT,80,DIRECT #匹配请求目标端口范围，mihomo 可以使用 来匹配端口范围，使用 / 或者 , 来区分多个端口/端口范围
+##SRC-PORT,7777,DIRECT #匹配请求来源端口范围，mihomo 可以使用 来匹配端口范围，使用 / 或者 , 来区分多个端口/端口范围
+##
+##IN-PORT,7890,PROXY #匹配入站端口，可用端口范围，mihomo 可以使用 来匹配端口范围，使用 / 或者 , 来区分多个端口/端口范围
+##IN-TYPE,SOCKS/HTTP,PROXY #匹配入站类型
+##IN-USER,mihomo,PROXY #匹配入站用户名，支持使用 / 分隔多个用户名
+##IN-NAME,ss,PROXY #匹配入站名称
+##
+##PROCESS-PATH,/usr/bin/wget,PROXY #使用完整进程路径匹配
+##PROCESS-PATH,C:\Program Files\Google\Chrome\Application\chrome.exe,PROXY #使用完整进程路径匹配
+##PROCESS-PATH-REGEX,.*bin/wget,PROXY #使用进程路径正则表达式匹配
+##PROCESS-PATH-REGEX,(?i).*Application\\chrome.*,PROXY #使用进程路径正则表达式匹配
+##
+##PROCESS-NAME,curl,PROXY #使用进程匹配
+##PROCESS-NAME,chrome.exe,PROXY #使用进程匹配
+##PROCESS-NAME,com.termux,PROXY #使用进程匹配，在Android平台可以匹配包名
+##PROCESS-NAME-REGEX,curl$,PROXY #使用进程名称正则表达式匹配
+##PROCESS-NAME-REGEX,(?i)Telegram,PROXY #使用进程名称正则表达式匹配
+##PROCESS-NAME-REGEX,.*telegram.*,PROXY #使用进程名称正则表达式匹配，在Android平台可以匹配包名
+##UID,1001,DIRECT #匹配 Linux USER ID
+##
+##NETWORK,udp,DIRECT #匹配 tcp 或者 udp
+##DSCP,4,DIRECT #匹配 DSCP 标记 (仅限 tproxy udp 入站)
+##
+##RULE-SET,providername,proxy #引用规则集合，需配置 rule-providers
+##AND,((DOMAIN,baidu.com),(NETWORK,UDP)),DIRECT #逻辑规则，需要注意括号的使用
+##OR,((NETWORK,UDP),(DOMAIN,baidu.com)),REJECT #逻辑规则，需要注意括号的使用
+##NOT,((DOMAIN,baidu.com)),PROXY #逻辑规则，需要注意括号的使用
+##SUB-RULE,(NETWORK,tcp),sub-rule #匹配至子规则，需要注意括号的使用
+##
+##MATCH,auto #匹配所有请求，无需条件
+##
+##附加参数
+##no-resolve
+##仅支持关于「目标IP」的规则
+##域名开始匹配关于「目标IP」规则时，mihomo 将触发 dns 解析来检查域名的「目标IP」是否匹配规则，可以选择「no-resolve」选项以跳过 dns 解析
+##如在更早的匹配中触发了 dns 解析，则依旧会匹配到添加了「no-resolve」选项的「目标IP」类规则
+##src
+##仅支持关于「目标IP」的规则
+##将「目标IP」匹配转为「来源IP」匹配
+
+DOMAIN-KEYWORD,speedtest
