@@ -91,9 +91,7 @@ DOMAIN,tracking.miui.com
 
 # Apple CDN
 IP-CIDR,38.244.62.5/32,no-resolve
-
 IP-CIDR,154.17.2.171/32,no-resolve
-
 IP-CIDR,45.129.8.99/32,no-resolve
 IP-CIDR,202.73.4.144/32,no-resolve
 IP-CIDR,148.135.127.60/32,no-resolve
@@ -104,6 +102,7 @@ IP-CIDR,107.172.50.133/32,no-resolve
 IP-CIDR,209.54.107.45/32,no-resolve
 IP-CIDR,216.144.226.135/32,no-resolve
 IP-CIDR,103.196.20.187/32,no-resolve
+IP-CIDR,23.147.204.67/32,no-resolve
 
 # Pear.inc
 DOMAIN-SUFFIX,akrineon.top
