@@ -121,6 +121,9 @@ proxy-groups:
     type: select
     proxies:
       - 🧬 Proxy
+      - 💡 Point
+      - 💫 Special
+      - 🚧 Temp
       - DIRECT
       - REJECT
   ### END DEFAULT ###
