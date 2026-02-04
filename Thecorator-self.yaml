@@ -4,7 +4,6 @@ allow-lan: true
 mode: rule
 log-level: warning
 ipv6: false
-global-client-fingerprint: random
 unified-delay: true
 tcp-concurrent: true
 ##### END #####
