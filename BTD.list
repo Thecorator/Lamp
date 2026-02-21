@@ -57,5 +57,3 @@
 ##src
 ##仅支持关于「目标IP」的规则
 ##将「目标IP」匹配转为「来源IP」匹配
-
-DOMAIN-KEYWORD,torrent
